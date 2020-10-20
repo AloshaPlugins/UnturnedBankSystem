@@ -8,13 +8,13 @@ using SDG.Unturned;
 
 namespace BankSystem.Managers
 {
-    public class ControlManager
+    public static class ControlManager
     {
         private const string Prefix = "ABS";
         private const short Key = 457;
-        public List<Screen> Screens = new List<Screen>();
+        public static List<Screen> Screens = new List<Screen>();
 
-        public void OnButtonClicked(Player player, string buttonName)
+        public static void OnButtonClicked(Player player, string buttonName)
         {
             if (!buttonName.StartsWith(Prefix)) return;
             buttonName = buttonName.Substring(Prefix.Length);
@@ -23,7 +23,7 @@ namespace BankSystem.Managers
 
         }
 
-        public void OnTextTyped(Player player, string buttonName, string text)
+        public static void OnTextTyped(Player player, string buttonName, string text)
         {
             if (!buttonName.StartsWith(Prefix)) return;
             buttonName = buttonName.Substring(Prefix.Length);
@@ -32,17 +32,17 @@ namespace BankSystem.Managers
 
         }
 
-        public void ShowMainUI(Player player)
+        public static void ShowMainUI(Player player)
         {
             
         }
 
-        public void ReturnMainUI(Player player)
+        public static void ReturnMainUI(Player player)
         {
 
-        }
+        }   
 
-        public void CloseUI(Player player)
+        public static void CloseUI(Player player)
         {
 
         }
