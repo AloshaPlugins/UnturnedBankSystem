@@ -12,6 +12,9 @@ namespace BankSystem.Models
         public CSteamID Id;
         public Account Account;
         public int Page;
+        public List<Account> Accounts;
+        public bool ISended = false;
+        public string Response1 = string.Empty, Response2 = string.Empty;
         public Screen(CSteamID id, int page, Account account)
         {
             Id = id;

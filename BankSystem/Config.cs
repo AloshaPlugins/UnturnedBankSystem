@@ -11,12 +11,13 @@ namespace BankSystem
 {
     public class Config : IRocketPluginConfiguration
     {
-        public ushort Effect;
+        public ushort Effect, ATM;
         public int AccountLimit;
         public List<Account> Accounts;
         public void LoadDefaults()
         {
             Effect = 47532;
+            ATM = 369;
             AccountLimit = 5;
             Accounts = new List<Account>();
         }

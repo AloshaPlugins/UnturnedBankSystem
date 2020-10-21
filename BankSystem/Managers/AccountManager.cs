@@ -23,10 +23,17 @@ namespace BankSystem.Managers
         public static Account CreateAccount(Account account)
         {
             Main.Instance.Configuration.Instance.Accounts.Add(account);
-            account.Save();
+            Save();
             return account;
         }
 
+        public static void AddAction(Account account, string str, DateTime time)
+        {
+            account.Histories.Add($"[{time.ToLongDateString()}] {str}");
+            Save();
+        }
+
+        public static void Save() => Main.Instance.Configuration.Save();
         public static int NewAccountId()
         {
             int id;

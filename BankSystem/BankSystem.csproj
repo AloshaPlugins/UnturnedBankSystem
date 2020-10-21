@@ -71,7 +71,6 @@
     <Compile Include="Managers\AccountManager.cs" />
     <Compile Include="Managers\ControlManager.cs" />
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\IAction.cs" />
     <Compile Include="Models\Screen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
