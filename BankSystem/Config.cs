@@ -17,7 +17,7 @@ namespace BankSystem
         public void LoadDefaults()
         {
             Effect = 47532;
-            ATM = 369;
+            ATM = 61356;
             AccountLimit = 5;
             Accounts = new List<Account>();
         }

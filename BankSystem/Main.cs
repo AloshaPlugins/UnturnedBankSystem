@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BankSystem.Managers;
 using Rocket.Core.Plugins;
+using Rocket.Unturned;
 using Rocket.Unturned.Events;
 using Rocket.Unturned.Player;
 using SDG.Unturned;
@@ -21,8 +22,13 @@ namespace BankSystem
             Instance = this;
             EffectManager.onEffectButtonClicked += ControlManager.OnButtonClicked;
             EffectManager.onEffectTextCommitted += ControlManager.OnTextTyped;
-
             UnturnedPlayerEvents.OnPlayerUpdateGesture += UnturnedPlayerEventsOnOnPlayerUpdateGesture;
+            U.Events.OnPlayerDisconnected += EventsOnOnPlayerDisconnected;
+        }
+
+        private void EventsOnOnPlayerDisconnected(UnturnedPlayer player)
+        {
+            ControlManager.Screens.RemoveAll(screen => screen.Id == player.CSteamID);
         }
 
         private void UnturnedPlayerEventsOnOnPlayerUpdateGesture(UnturnedPlayer player, UnturnedPlayerEvents.PlayerGesture gesture)
@@ -49,7 +55,7 @@ namespace BankSystem
             EffectManager.onEffectButtonClicked -= ControlManager.OnButtonClicked;
             EffectManager.onEffectTextCommitted -= ControlManager.OnTextTyped;
             UnturnedPlayerEvents.OnPlayerUpdateGesture -= UnturnedPlayerEventsOnOnPlayerUpdateGesture;
-
+            U.Events.OnPlayerDisconnected -= EventsOnOnPlayerDisconnected;
         }
     }
 }
