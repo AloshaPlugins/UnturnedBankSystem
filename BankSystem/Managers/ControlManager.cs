@@ -209,7 +209,9 @@ namespace BankSystem.Managers
                 var account = GetNext(screen.Accounts, screen.Page + 1);
                 if (account == null)
                 {
+                    screen.Page += 1;
                     ShowAddCardUI(player);
+                    
                     return;
                 }
                 screen.Page += 1;
@@ -253,7 +255,7 @@ namespace BankSystem.Managers
 
             if (buttonName == "Transfer_Player")
             {
-                if (int.TryParse(text, out var result))
+                if (!int.TryParse(text, out var result))
                 {
                     SendError(Id, "HATA: Bu alana sadece bir hesap numarası girebilirsin.", "Transfer_ErrorMessage_1", 5);
                     return;
@@ -403,7 +405,6 @@ namespace BankSystem.Managers
             var Id = player.channel.owner.playerID.steamID;
             // EffectManager.sendUIEffect(Main.Instance.Configuration.Instance.Effect, Key, Id, true);
             EffectManager.sendUIEffectVisibility(Key, Id, true, "Select_Card_Add", true);
-
             MultipleVisibility(Id, new string[]
             {
                 "Select_Card",
